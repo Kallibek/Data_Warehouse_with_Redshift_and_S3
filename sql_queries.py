@@ -61,7 +61,7 @@ staging_songs_table_create = ("""
 
 songplay_table_create = ("""
     CREATE TABLE IF NOT EXISTS songplays (
-                songplay_id INTEGER IDENTITY(0,1) SORTKEY,
+                songplay_id INTEGER IDENTITY(0,1) PRIMARY KEY SORTKEY,
                 start_time  TIMESTAMP,
                 user_id     VARCHAR DISTKEY,
                 level       VARCHAR,
@@ -74,7 +74,7 @@ songplay_table_create = ("""
 
 user_table_create = ("""
     CREATE TABLE IF NOT EXISTS users (
-                user_id     INTEGER SORTKEY DISTKEY,
+                user_id     INTEGER PRIMARY KEY SORTKEY DISTKEY,
                 first_name  VARCHAR,
                 last_name   VARCHAR,
                 gender      VARCHAR,
@@ -83,7 +83,7 @@ user_table_create = ("""
 
 song_table_create = ("""
     CREATE TABLE IF NOT EXISTS songs (
-                song_id     VARCHAR SORTKEY,
+                song_id     VARCHAR PRIMARY KEY SORTKEY,
                 title       VARCHAR,
                 artist_id   VARCHAR,
                 year        INTEGER,
@@ -92,7 +92,7 @@ song_table_create = ("""
 
 artist_table_create = ("""
     CREATE TABLE IF NOT EXISTS artists (
-                artist_id   VARCHAR SORTKEY,
+                artist_id   VARCHAR PRIMARY KEY SORTKEY,
                 name        VARCHAR,
                 location    VARCHAR,
                 latitude    DECIMAL,
@@ -138,7 +138,7 @@ songplay_table_insert = ("""
                             session_id,
                             location, 
                             user_agent)
-    SELECT timestamp 'epoch' + CAST(e.ts AS BIGINT)/1000 * interval '1 second',
+    SELECT DISTINCT timestamp 'epoch' + CAST(e.ts AS BIGINT)/1000 * interval '1 second',
                         e.userId, 
                         e.level, 
                         s.song_id, 
