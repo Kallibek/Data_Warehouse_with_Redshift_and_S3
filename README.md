@@ -7,7 +7,7 @@ by Kallibek Kazbekov
 The Sparkify startup grows and wants to move their data to cloud database, namely redshift. Their user activity log data and music meta data, both in JSON, are located in S3 bucket. 
 
 ## ETL schema
-<img src="https://raw.githubusercontent.com/Kallibek/Data_Warehouse_s3/master/Supplementary/ETL%20pipeline.png" alt="alt text">
+<img src="/Supplementary/ETL%20pipeline.png" alt="alt text">
 
 ## ETL pipeline
 1. Redshift copies log files and metadata to the two tables of Redshift database: `staging_events` and `staging_songs`;
