@@ -1,4 +1,4 @@
-# Data Warehouse using AWS (Redshift and S3)
+# Data Warehouse using Redshift and S3
 by Kallibek Kazbekov
 
 ---
